@@ -104,4 +104,30 @@ public class BookDAO {
 		}
 		return list;
 	}
+	
+	public int add(Connection conn, String title, String author, String publisher, String imgPath) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "INSERT INTO book (title, author, publisher, imgPath) VALUES (?, ?, ?, ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, author);
+			pstmt.setString(3, publisher);
+			pstmt.setString(4, imgPath);
+			
+			int check = pstmt.executeUpdate();
+			if(check == 0) re = 0;
+			else re = 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
 }

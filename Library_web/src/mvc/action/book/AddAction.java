@@ -1,22 +1,21 @@
-package mvc.action;
+package mvc.action.book;
 
 import java.io.IOException;
 import java.sql.Connection;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
-import mvc.dao.AdminDAO;
+import mvc.dao.BookDAO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
-public class AdminAction implements Action{
+public class AddAction implements Action {
 
-	private static final String viewPath = "/index.jsp";
-	private static final String checkPath = "/WEB-INF/check/checkMemberResult.jsp";
+	private static final String viewPath = "/subject/library.jsp";
+	private static final String checkPath = "/WEB-INF/check/checkBookResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,20 +25,23 @@ public class AdminAction implements Action{
 			
 		} else if(request.getMethod().equals("POST")) {
 			
-			String id = request.getParameter("id");
-			String pw = request.getParameter("pw");
+			String title = request.getParameter("title");
+			String author = request.getParameter("author");
+			String publisher = request.getParameter("publisher");
+			
+			String imgPath = "";
+			//이미지파일 받기
 			
 			Connection conn = JdbcConnection.getConnection();
-			AdminDAO dao = AdminDAO.getInstance();
+			BookDAO dao = BookDAO.getInstance();
 			
-			int result = dao.login(conn, id, pw);
-			request.setAttribute("loginResult", result);
-			if(result == 1) {
-				request.getSession().setAttribute("admin", id);
-			}
+			int result = dao.add(conn, title, author, publisher, imgPath);
+			
+			request.setAttribute("addResult", result);
 			
 			JdbcCloser.close(conn);
 			request.getRequestDispatcher(checkPath).forward(request, response);
+			
 		}
 	}
 

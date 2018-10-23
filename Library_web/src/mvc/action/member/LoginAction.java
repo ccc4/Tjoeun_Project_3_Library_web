@@ -50,7 +50,6 @@ public class LoginAction implements Action{
 			}
 			
 			JdbcCloser.close(conn);
-			
 			request.getRequestDispatcher(checkPath).forward(request, response);
 		}
 	}

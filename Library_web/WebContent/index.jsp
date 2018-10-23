@@ -16,7 +16,6 @@
 	<input type="button" value="관리자로그인" onclick="location.href='${pageContext.request.contextPath }/admin.jsp'">
 </c:if>
 
-
 <h3>성훈도서관</h3>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/">메인</a></li>

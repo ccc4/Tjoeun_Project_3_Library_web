@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${!empty sessionScope.admin }" var="adminCheck">
+	<input type="button" value="관리자로그아웃" onclick="location.href='${pageContext.request.contextPath }/adminOut'">
+</c:if>
+<c:if test="${!adminCheck }">
+	<input type="button" value="관리자로그인" onclick="location.href='${pageContext.request.contextPath }/admin.jsp'">
+</c:if>
+
 <h3>성훈도서관</h3>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/">메인</a></li>

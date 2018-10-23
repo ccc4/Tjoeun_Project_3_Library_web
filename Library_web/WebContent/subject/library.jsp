@@ -13,7 +13,7 @@
 	<input type="text" name="find" placeholder="책제목 검색">
 	<input type="button" value="검색">
 	<c:if test="${!empty sessionScope.admin }">
-		<input type="button" value="책추가">
+		<input type="button" value="책추가" onclick="location.href='${pageContext.request.contextPath }/library/add.jsp'">
 	</c:if>
 </div>
 

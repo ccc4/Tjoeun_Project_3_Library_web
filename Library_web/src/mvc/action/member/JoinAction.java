@@ -39,10 +39,10 @@ public class JoinAction implements Action{
 			MemberDAO dao = MemberDAO.getInstance();
 			
 			int result = dao.join(conn, id, pw, nickname, name, age, gender, tel, email, address);
+			
 			request.setAttribute("joinResult", result);
 			
 			JdbcCloser.close(conn);
-			
 			request.getRequestDispatcher(checkPath).forward(request, response);
 		}
 	}

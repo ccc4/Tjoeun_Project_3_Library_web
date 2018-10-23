@@ -21,7 +21,7 @@ public class ListAction implements Action {
 
 	
 	private static final String viewPath = "/subject/library.jsp";
-	private static final String checkPath = "/WEB-INF/check/checkBoardResult.jsp";
+	private static final String checkPath = "/WEB-INF/check/checkBookResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,13 +57,13 @@ public class ListAction implements Action {
 			
 			ArrayList<BookDTO> list = dao.list(conn, page, onePage);
 			
-			JdbcCloser.close(conn);
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			
+			JdbcCloser.close(conn);
 			request.getRequestDispatcher(viewPath).forward(request, response);
 			
 		} else if(request.getMethod().equals("POST")) {
