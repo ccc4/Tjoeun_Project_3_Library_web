@@ -16,7 +16,9 @@ public class MainAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getMethod().equals("GET")) {
+			
 			request.getRequestDispatcher(viewPath).forward(request, response);
+			
 		} else if(request.getMethod().equals("POST")) {
 			
 		}

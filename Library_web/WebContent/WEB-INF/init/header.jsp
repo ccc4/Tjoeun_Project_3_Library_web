@@ -4,7 +4,7 @@
 <h3>성훈도서관</h3>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/">메인</a></li>
-	<li><a href="${pageContext.request.contextPath }/subject/bb.jsp">책목록</a></li>
+	<li><a href="${pageContext.request.contextPath }/library">책목록</a></li>
 	<li><a href="${pageContext.request.contextPath }/subject/cc.jsp">게시판</a></li>
 	<li><a href="${pageContext.request.contextPath }/subject/dd.jsp">방명록</a></li>
 </ul>

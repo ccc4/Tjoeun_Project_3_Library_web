@@ -1,4 +1,4 @@
-package mvc.dto.member;
+package mvc.dto;
 
 public class MemberDTO {
 	

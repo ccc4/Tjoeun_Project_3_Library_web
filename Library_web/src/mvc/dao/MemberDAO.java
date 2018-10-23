@@ -1,11 +1,11 @@
-package mvc.dao.member;
+package mvc.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import mvc.dto.member.MemberDTO;
+import mvc.dto.MemberDTO;
 import mvc.util.JdbcCloser;
 
 public class MemberDAO {

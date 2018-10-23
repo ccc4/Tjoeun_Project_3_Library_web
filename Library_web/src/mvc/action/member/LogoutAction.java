@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
-import mvc.dao.member.MemberDAO;
-import mvc.dto.member.MemberDTO;
+import mvc.dao.MemberDAO;
+import mvc.dto.MemberDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
