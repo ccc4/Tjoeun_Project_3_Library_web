@@ -1,4 +1,4 @@
-package mvc.action.book;
+package mvc.action.guestBook;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
 import mvc.dao.BookDAO;
+import mvc.dao.guestBookDAO;
 import mvc.dto.BookDTO;
+import mvc.dto.guestBookDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
 public class ListAction implements Action {
 
-	private static final int BOOK_ONEPAGE = 5;
-	private static final int BOOK_ONESECTION = 5;
+	private static final int GUESTBOOK_ONEPAGE = 5;
+	private static final int GUESTBOOK_ONESECTION = 5;
 
 	
-	private static final String viewPath = "/library.jsp";
+	private static final String viewPath = "/guestBook.jsp";
 	private static final String checkPath = "/WEB-INF/check/checkBookResult.jsp";
 	
 	@Override
@@ -28,11 +30,11 @@ public class ListAction implements Action {
 		if(request.getMethod().equals("GET")) {
 			
 			Connection conn = JdbcConnection.getConnection();
-			BookDAO dao = BookDAO.getInstance();
+			guestBookDAO dao = guestBookDAO.getInstance();
 			
 			int allCount = dao.allCount(conn);
-			int onePage = BOOK_ONEPAGE;
-			int oneSection = BOOK_ONESECTION;
+			int onePage = GUESTBOOK_ONEPAGE;
+			int oneSection = GUESTBOOK_ONESECTION;
 			
 			int totalPage = allCount / onePage + (allCount % onePage != 0 ? 1 : 0);
 			
@@ -55,7 +57,7 @@ public class ListAction implements Action {
 			int endPage = startPage + oneSection - 1;
 			if(endPage > totalPage) endPage = totalPage;
 			
-			ArrayList<BookDTO> list = dao.list(conn, page, onePage);
+			ArrayList<guestBookDTO> list = dao.list(conn, page, onePage);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);

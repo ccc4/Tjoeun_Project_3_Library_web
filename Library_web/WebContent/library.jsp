@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+
 <div>
 	<input type="text" name="find" placeholder="책제목 검색">
 	<input type="button" value="검색">
