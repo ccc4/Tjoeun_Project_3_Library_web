@@ -17,14 +17,12 @@ import mvc.util.JdbcConnection;
 
 public class MainAction implements Action{
 
-	private static final String viewPath = "/";
+	private static final String viewPath = "/index.jsp";
 	private static final String checkPath = "/WEB-INF/check/checkBoardResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getMethod().equals("GET")) {
-			
-			System.out.println("MainAction 들어옴");
 			
 			if(request.getSession().getAttribute("member") != null) {
 				MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");

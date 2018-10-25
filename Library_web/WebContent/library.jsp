@@ -12,11 +12,13 @@
 <jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
 
 <div>
-	<input type="text" name="find" placeholder="책제목 검색">
-	<input type="button" value="검색">
-	<c:if test="${!empty sessionScope.admin }">
-		<input type="button" value="책추가" onclick="location.href='${pageContext.request.contextPath }/library/add.jsp'">
-	</c:if>
+	<form action="${pageContext.request.contextPath }/search" method="POST">
+		<input type="text" name="title" placeholder="책제목 검색">
+		<input type="submit" value="검색">
+		<c:if test="${!empty sessionScope.admin }">
+			<input type="button" value="책추가" onclick="location.href='${pageContext.request.contextPath }/library/add.jsp'">
+		</c:if>
+	</form>
 </div>
 
 <table border="1">
@@ -30,9 +32,9 @@
 		</tr>	
 	</thead>
 	<tbody>
-		<c:forEach var="l" items="${list }">
+		<c:forEach var="l" items="${list }" varStatus="status">
 			<tr>
-				<td><p>${l.idx }</p></td>				
+				<td><p>${status.index + 1 }</p></td>				
 				<td><a href="${pageContext.request.contextPath }/lView?b_idx=${l.idx }">${l.title }</a></td>				
 				<td><p>${l.author }</p></td>				
 				<td><p>${l.publisher }</p></td>				

@@ -16,7 +16,7 @@ import mvc.util.JdbcConnection;
 
 public class LoginAction implements Action{
 
-	private static final String viewPath = "/main";
+	private static final String viewPath = "/";
 	private static final String checkPath = "/WEB-INF/check/checkMemberResult.jsp";
 	
 	@Override

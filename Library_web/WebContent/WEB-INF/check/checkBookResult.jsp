@@ -74,6 +74,13 @@
 	</script>
 </c:if>
 
+<c:if test="${wrongTitle == 1 }">
+	<script type="text/javascript">
+		alert("정확한 제목을 입력해주세요.");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+
 
 
 </body>

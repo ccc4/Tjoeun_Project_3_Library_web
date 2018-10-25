@@ -15,7 +15,7 @@
 </div>
 
 <div>
-	<table>
+	<table border="1">
 		<caption>대여정보</caption>
 		<thead>
 			<tr>
@@ -25,9 +25,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="rt" items="${rentalList }" >
+			<c:forEach var="rt" items="${rentalList }" varStatus="status">
 				<tr>
-					<td>${rt.idx }</td>
+					<td>${status.index + 1 }</td>
 					<td>${rt.title }</td>
 					<td>${rt.reserveDate }</td>
 				</tr>

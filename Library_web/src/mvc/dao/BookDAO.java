@@ -56,6 +56,31 @@ public class BookDAO {
 		return dto;
 	}
 	
+	public int getBookIdx(Connection conn, String title) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT idx FROM book WHERE title = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			re = 0;
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
+	
 	private RentalListDTO getRentalListDTO(ResultSet rs) throws SQLException {
 		RentalListDTO dto = new RentalListDTO();
 		
@@ -99,7 +124,7 @@ public class BookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM book ORDER BY idx LIMIT ?, ?";
+		String sql = "SELECT * FROM book ORDER BY title LIMIT ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

@@ -15,8 +15,8 @@
 <article>
 	<div class="container form">
 		<form action="${pageContext.request.contextPath }/GuestBookAdd" method="POST">
-			<input type="text" class="form-control" name="title" placeholder="제목">
-			<textarea rows="5" class="form-control" name="contents" placeholder="내용"></textarea>
+			<div><input type="text" class="form-control" name="title" placeholder="제목"></div>
+			<div><textarea class="form-control" name="contents" placeholder="내용"></textarea></div>
 			<input class="btn btn-success" type="submit" value="등록">
 		</form>
 	</div>
