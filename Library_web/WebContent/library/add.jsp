@@ -10,7 +10,7 @@
 <jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
 
 <div class="container">
-	<form action="${pageContext.request.contextPath }/addBook" method="POST">
+	<form action="${pageContext.request.contextPath }/addBook" method="POST" enctype="multipart/form-data">
 		<table> 
 		<!-- class="table" style="table-layout:fixed; word-break:break-all;"> -->
 			<tr>
@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td>이미지</td>
-				<td><input type="file" name="img" value="이미지추가"></td>
+				<td><input type="file" name="file" value="이미지추가"></td>
 			</tr>
 			<tr>
 				<td>미리보기</td>

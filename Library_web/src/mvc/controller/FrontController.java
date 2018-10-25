@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.action.Action;
 
 @WebServlet(urlPatterns= {"/"}, loadOnStartup=1)
+@MultipartConfig
 public class FrontController extends HttpServlet {
 	
 	private HashMap<String, Action> actionMap;

@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
 
-<input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/library'">
+<%-- <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/library'"> --%>
+<!-- <input type="button" value="뒤로" onclick="history.back()"> -->
+
+<h3>책 정보</h3>
 
 <div>
-	<table>
+	<table border="1">
 		<tr>
 			<td>책제목</td>
 			<td>${book.title }</td>
@@ -34,6 +36,17 @@
 				</c:if>
 				<c:if test="${!cntCheck}">
 					<c:out value="해당 책은 현재 모두 대여(or예약) 상태입니다."></c:out>
+				</c:if>
+			</td>
+		</tr>
+		<tr>
+			<td>이미지</td>
+			<td>
+				<c:if test="${book.imgName == '' }">
+					사진없음
+				</c:if>
+				<c:if test="${book.imgName != '' }">
+					<img src="${pageContext.request.contextPath}${book.imgName }" alt="사진">
 				</c:if>
 			</td>
 		</tr>

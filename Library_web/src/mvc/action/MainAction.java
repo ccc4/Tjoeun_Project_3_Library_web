@@ -12,6 +12,7 @@ import mvc.action.Action;
 import mvc.dao.BookDAO;
 import mvc.dto.MemberDTO;
 import mvc.dto.RentalListDTO;
+import mvc.dto.ReservationListDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
@@ -32,8 +33,10 @@ public class MainAction implements Action{
 				BookDAO dao = BookDAO.getInstance();
 				
 				ArrayList<RentalListDTO> rentalList = dao.rentalList(conn, m_idx);
+				ArrayList<ReservationListDTO> reservationList = dao.reservationList(conn, m_idx);
 				
 				request.setAttribute("rentalList", rentalList);
+				request.setAttribute("reservationList", reservationList);
 				
 				JdbcCloser.close(conn);
 			}

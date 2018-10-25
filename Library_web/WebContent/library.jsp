@@ -7,14 +7,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+	function search() {
+		open('','w','height=500,width=500,top=200,left=200');
+	}
+</script>
+
 <body>
 
 <jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
 
 <div>
-	<form action="${pageContext.request.contextPath }/search" method="POST">
+	<form action="${pageContext.request.contextPath }/search" method="POST" target="w" onsubmit="search()">
 		<input type="text" name="title" placeholder="책제목 검색">
 		<input type="submit" value="검색">
+		
 		<c:if test="${!empty sessionScope.admin }">
 			<input type="button" value="책추가" onclick="location.href='${pageContext.request.contextPath }/library/add.jsp'">
 		</c:if>
@@ -35,7 +42,7 @@
 		<c:forEach var="l" items="${list }" varStatus="status">
 			<tr>
 				<td><p>${status.index + 1 }</p></td>				
-				<td><a href="${pageContext.request.contextPath }/lView?b_idx=${l.idx }">${l.title }</a></td>				
+				<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${l.idx }', null, 'height=500,width=500,top=200,left=200')">${l.title }</a></td>	
 				<td><p>${l.author }</p></td>				
 				<td><p>${l.publisher }</p></td>				
 				<td><p>${l.count }</p></td>				

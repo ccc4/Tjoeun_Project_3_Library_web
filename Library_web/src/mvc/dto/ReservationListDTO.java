@@ -2,14 +2,14 @@ package mvc.dto;
 
 import java.sql.Timestamp;
 
-public class RentalListDTO {
+public class ReservationListDTO {
 	
 	private int idx;
 	private int m_idx;
 	private String nickname;
 	private int b_idx;
 	private String title;
-	private Timestamp rentalDate;
+	private Timestamp reserveDate;
 	
 	public int getIdx() {
 		return idx;
@@ -41,10 +41,12 @@ public class RentalListDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Timestamp getRentalDate() {
-		return rentalDate;
+	public Timestamp getReserveDate() {
+		return reserveDate;
 	}
-	public void setRentalDate(Timestamp rentalDate) {
-		this.rentalDate = rentalDate;
+	public void setReserveDate(Timestamp reserveDate) {
+		this.reserveDate = reserveDate;
 	}
+	
+	
 }

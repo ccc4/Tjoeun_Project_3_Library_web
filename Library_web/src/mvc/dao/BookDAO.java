@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import mvc.dto.BookDTO;
 import mvc.dto.RentalListDTO;
+import mvc.dto.ReservationListDTO;
 import mvc.util.JdbcCloser;
 
 public class BookDAO {
@@ -83,6 +84,19 @@ public class BookDAO {
 	
 	private RentalListDTO getRentalListDTO(ResultSet rs) throws SQLException {
 		RentalListDTO dto = new RentalListDTO();
+		
+		dto.setIdx(rs.getInt(1));
+		dto.setM_idx(rs.getInt(2));
+		dto.setNickname(rs.getString(3));
+		dto.setB_idx(rs.getInt(4));
+		dto.setTitle(rs.getString(5));
+		dto.setRentalDate(rs.getTimestamp(6));
+		
+		return dto;
+	}
+	
+	private ReservationListDTO getReservationListDTO(ResultSet rs) throws SQLException {
+		ReservationListDTO dto = new ReservationListDTO();
 		
 		dto.setIdx(rs.getInt(1));
 		dto.setM_idx(rs.getInt(2));
@@ -407,6 +421,31 @@ public class BookDAO {
 			
 			while(rs.next()) {
 				list.add(getRentalListDTO(rs));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return list;
+	}
+	
+	public ArrayList<ReservationListDTO> reservationList(Connection conn, int m_idx) {
+		ArrayList<ReservationListDTO> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM reservation_list_view WHERE m_idx = ? ORDER BY idx";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m_idx);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				list.add(getReservationListDTO(rs));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
