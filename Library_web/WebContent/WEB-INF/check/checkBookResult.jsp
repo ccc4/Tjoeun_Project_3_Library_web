@@ -22,6 +22,58 @@
 	</script>
 </c:if>
 
+<c:if test="${rentalResult == 1 }">
+	<script type="text/javascript">
+		alert("대여 성공");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+<c:if test="${rentalResult == 0 }">
+	<script type="text/javascript">
+		alert("대여 실패");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+
+<c:if test="${reserveResult == 1 }">
+	<script type="text/javascript">
+		alert("예약 성공");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+<c:if test="${reserveResult == 0 }">
+	<script type="text/javascript">
+		alert("예약 실패");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+
+<c:if test="${returnResult == 1 }">
+	<script type="text/javascript">
+		alert("반납 성공");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+<c:if test="${returnResult == 0 }">
+	<script type="text/javascript">
+		alert("반납 실패");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+
+<c:if test="${cancelResult == 1 }">
+	<script type="text/javascript">
+		alert("예약취소 성공");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+<c:if test="${cancelResult == 0 }">
+	<script type="text/javascript">
+		alert("예약취소 실패");
+		location.href= "${pageContext.request.contextPath}/library";
+	</script>
+</c:if>
+
 
 
 </body>

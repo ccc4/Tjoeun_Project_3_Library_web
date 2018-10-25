@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
 import mvc.dao.MemberDAO;
+import mvc.dto.MemberDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
@@ -25,8 +26,9 @@ public class pwChangeAction implements Action{
 			
 		} else if(request.getMethod().equals("POST")) {
 			
-			int idx = Integer.parseInt(request.getParameter("idx"));
-			String prevPw = request.getParameter("prevPw");
+			MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
+			int idx = member.getIdx();
+			String prevPw = member.getPw();
 			String prevPwCheck = request.getParameter("prevPwCheck");
 			String newPw = request.getParameter("newPw");
 			

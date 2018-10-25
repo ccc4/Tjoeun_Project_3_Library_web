@@ -41,13 +41,6 @@
 	</script>
 </c:if>
 
-<c:if test="${wrongResult == 1 }">
-	<script type="text/javascript">
-		alert("잘못된 접근입니다.");
-		location.href= "${pageContext.request.contextPath}/index.jsp";
-	</script>
-</c:if>
-
 <c:if test="${modifyResult == 1 }">
 	<script type="text/javascript">
 		alert("정보수정 성공");

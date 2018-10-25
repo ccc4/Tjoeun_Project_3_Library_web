@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+
 <div class="container">
 	<form action="${pageContext.request.contextPath }/join" method="POST" name="reg_frm">
 		<table> 

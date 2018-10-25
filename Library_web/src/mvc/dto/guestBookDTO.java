@@ -6,10 +6,18 @@ public class guestBookDTO {
 	
 	private int idx;
 	private int m_idx;
+	private String nickname;
 	private String title;
 	private String contents;
 	private Timestamp writeDate;
 	
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public int getIdx() {
 		return idx;
 	}

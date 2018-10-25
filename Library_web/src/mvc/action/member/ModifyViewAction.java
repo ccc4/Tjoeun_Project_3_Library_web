@@ -15,7 +15,7 @@ import mvc.util.JdbcConnection;
 public class ModifyViewAction implements Action{
 
 	private static final String viewPath = "/member/modify.jsp";
-	private static final String checkPath = "/WEB-INF/check/checkMemberResult.jsp";
+	private static final String checkPath = "/WEB-INF/check/checkCommonResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

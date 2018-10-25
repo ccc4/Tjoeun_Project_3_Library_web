@@ -22,9 +22,10 @@ public class guestBookDAO {
 		
 		dto.setIdx(rs.getInt(1));
 		dto.setM_idx(rs.getInt(2));
-		dto.setTitle(rs.getString(3));
-		dto.setContents(rs.getString(4));
-		dto.setWriteDate(rs.getTimestamp(5));
+		dto.setNickname(rs.getString(3));
+		dto.setTitle(rs.getString(4));
+		dto.setContents(rs.getString(5));
+		dto.setWriteDate(rs.getTimestamp(6));
 		
 		return dto;
 	}
@@ -35,7 +36,7 @@ public class guestBookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT count(*) FROM guestBook WHERE exist = 1";
+		String sql = "SELECT count(*) FROM guestBook_view";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -59,7 +60,7 @@ public class guestBookDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM guestBook ORDER BY idx DESC LIMIT ?, ?";
+		String sql = "SELECT * FROM guestBook_view ORDER BY idx DESC LIMIT ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

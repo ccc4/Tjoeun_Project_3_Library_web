@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
 import mvc.dao.MemberDAO;
+import mvc.dto.MemberDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
@@ -25,7 +26,8 @@ public class ModifyAction implements Action{
 			
 		} else if(request.getMethod().equals("POST")) {
 			
-			int idx = Integer.parseInt(request.getParameter("idx"));
+			MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
+			int idx = member.getIdx();
 			String nickname = request.getParameter("nickname");
 			String name = request.getParameter("name");
 			int age = Integer.parseInt(request.getParameter("age"));

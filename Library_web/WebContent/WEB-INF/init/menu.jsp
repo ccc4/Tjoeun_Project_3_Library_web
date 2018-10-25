@@ -14,7 +14,7 @@
 	<li><a href="${pageContext.request.contextPath }/">메인</a></li>
 	<li><a href="${pageContext.request.contextPath }/library">책목록</a></li>
 	<li><a href="${pageContext.request.contextPath }/cc.jsp">게시판</a></li>
-	<li><a href="${pageContext.request.contextPath }/dd.jsp">방명록</a></li>
+	<li><a href="${pageContext.request.contextPath }/guestBook">방명록</a></li>
 </ul>
 
 <c:choose>

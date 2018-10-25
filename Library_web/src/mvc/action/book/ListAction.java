@@ -41,7 +41,7 @@ public class ListAction implements Action {
 				page = Integer.parseInt(request.getParameter("page"));
 				if(page < 1 || page > totalPage) {
 					try {
-						response.sendRedirect(request.getContextPath() + "/jsp/guest.jsp");
+						response.sendRedirect(request.getContextPath());
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

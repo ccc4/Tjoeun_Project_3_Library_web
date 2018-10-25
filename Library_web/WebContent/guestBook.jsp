@@ -14,7 +14,7 @@
 
 <article>
 	<div class="container form">
-		<form action="${pageContext.request.contextPath }/GuestBookAdd.do" method="POST">
+		<form action="${pageContext.request.contextPath }/GuestBookAdd" method="POST">
 			<input type="text" class="form-control" name="title" placeholder="제목">
 			<textarea rows="5" class="form-control" name="contents" placeholder="내용"></textarea>
 			<input class="btn btn-success" type="submit" value="등록">
@@ -70,15 +70,13 @@
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
-							<th>
-								글번호 : ${g.idx } / 제목 : ${g.title }
-							</th>
+							<th>글번호 : ${g.idx } / 제목 : ${g.title }</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>
-								<strong>글쓴이</strong> : ${g.name } / <strong>작성일</strong>	: ${g.writeDate }
+								<strong>글쓴이</strong> : ${g.nickname } / <strong>작성일</strong>	: ${g.writeDate }
 							</td>
 						</tr>
 						<tr>

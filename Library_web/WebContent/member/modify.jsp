@@ -8,9 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+
 <div class="container">
 	<form action="${pageContext.request.contextPath }/modify" method="POST">
-		<input type="hidden" name="idx" value="${sessionScope.member.idx }">
 		<table> 
 		<!-- class="table" style="table-layout:fixed; word-break:break-all;"> -->
 			<tr>

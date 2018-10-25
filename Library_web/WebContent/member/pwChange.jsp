@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
 
 <form action="${pageContext.request.contextPath }/pwChange" method="POST">
-	<input type="hidden" name="idx" value="${sessionScope.member.idx }">
-	<input type="hidden" name="prevPw" value="${sessionScope.member.pw }">
 	<div>id: ${sessionScope.member.id }</div>
 	<div>이전 비밀번호:<input type="password" name="prevPwCheck"></div>
 	<div>바꿀 비밀번호:<input type="password" name="newPw"></div>

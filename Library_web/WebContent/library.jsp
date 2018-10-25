@@ -33,7 +33,7 @@
 		<c:forEach var="l" items="${list }">
 			<tr>
 				<td><p>${l.idx }</p></td>				
-				<td><p>${l.title }</p></td>				
+				<td><a href="${pageContext.request.contextPath }/lView?b_idx=${l.idx }">${l.title }</a></td>				
 				<td><p>${l.author }</p></td>				
 				<td><p>${l.publisher }</p></td>				
 				<td><p>${l.count }</p></td>				
