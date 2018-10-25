@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <h2 style="text-align: center;">방명록</h2>
 

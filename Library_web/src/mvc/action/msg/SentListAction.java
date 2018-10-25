@@ -1,4 +1,4 @@
-package mvc.action.mail;
+package mvc.action.msg;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,26 +9,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
-import mvc.dao.BookDAO;
-import mvc.dto.BookDTO;
+import mvc.dao.MsgDAO;
+import mvc.dto.MemberDTO;
+import mvc.dto.MsgDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
-public class MailAction implements Action {
+public class SentListAction implements Action {
 
 	private static final int BOOK_ONEPAGE = 5;
 	private static final int BOOK_ONESECTION = 5;
 
 	
-	private static final String viewPath = "/library.jsp";
+	private static final String viewPath = "/msg/sentList.jsp";
 	private static final String checkPath = "/WEB-INF/check/checkBookResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getMethod().equals("GET")) {
 			
+			MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
+			int m_idx = member.getIdx();
+			
 			Connection conn = JdbcConnection.getConnection();
-			BookDAO dao = BookDAO.getInstance();
+			MsgDAO dao = MsgDAO.getInstance();
 			
 			int allCount = dao.allCount(conn);
 			int onePage = BOOK_ONEPAGE;
@@ -55,7 +59,7 @@ public class MailAction implements Action {
 			int endPage = startPage + oneSection - 1;
 			if(endPage > totalPage) endPage = totalPage;
 			
-			ArrayList<BookDTO> list = dao.list(conn, page, onePage);
+			ArrayList<MsgDTO> list = dao.sentList(conn, page, onePage, m_idx);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);

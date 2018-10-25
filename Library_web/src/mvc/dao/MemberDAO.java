@@ -16,7 +16,7 @@ public class MemberDAO {
 	}
 	private MemberDAO() {}
 	
-	private MemberDTO getDTO(ResultSet rs) throws SQLException {
+	private MemberDTO getMemberDTO(ResultSet rs) throws SQLException {
 		MemberDTO dto = new MemberDTO();
 		
 		dto.setIdx(rs.getInt(1));
@@ -33,7 +33,7 @@ public class MemberDAO {
 		return dto;
 	}
 	
-	public MemberDTO getDTO(Connection conn, String id) {
+	public MemberDTO getMemberDTO(Connection conn, String id) {
 		MemberDTO dto = null;
 		
 		PreparedStatement pstmt = null;
@@ -47,7 +47,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto = getDTO(rs);
+				dto = getMemberDTO(rs);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class MemberDAO {
 		return dto;
 	}
 	
-	public MemberDTO getDTO(Connection conn, int idx) {
+	public MemberDTO getMemberDTO(Connection conn, int idx) {
 		MemberDTO dto = null;
 		
 		PreparedStatement pstmt = null;
@@ -72,7 +72,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dto = getDTO(rs);
+				dto = getMemberDTO(rs);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,6 +81,31 @@ public class MemberDAO {
 			JdbcCloser.close(pstmt);
 		}
 		return dto;
+	}
+	
+	public int getMemberIdx(Connection conn, String nickname) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT idx FROM member WHERE nickname = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nickname);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return re;
 	}
 	
 	public int join(Connection conn, String id, String pw, String nickname, String name, int age, int gender, String tel, String email, String address) {

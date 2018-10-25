@@ -1,7 +1,8 @@
-package mvc.action.member;
+package mvc.action.msg;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -9,14 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
 import mvc.dao.MemberDAO;
+import mvc.dao.MsgDAO;
 import mvc.dto.MemberDTO;
+import mvc.dto.MsgDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
-public class ModifyAction implements Action{
+public class WriteAction implements Action {
 
-	private static final String viewPath = "/index.jsp";
-	private static final String checkPath = "/WEB-INF/check/checkMemberResult.jsp";
+	private static final String viewPath = "/msg/sent.jsp";
+	private static final String checkPath = "/WEB-INF/check/checkMsgResult.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,26 +30,30 @@ public class ModifyAction implements Action{
 		} else if(request.getMethod().equals("POST")) {
 			
 			MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
-			int idx = member.getIdx();
-			String nickname = request.getParameter("nickname");
-			String name = request.getParameter("name");
-			int age = Integer.parseInt(request.getParameter("age"));
-			int gender = Integer.parseInt(request.getParameter("gender"));
-			String tel = request.getParameter("tel");
-			String email = request.getParameter("email");
-			String address = request.getParameter("address");
+			int from_idx = member.getIdx();
+			String to_nickname = request.getParameter("nickname");
+			String title = request.getParameter("title");
+			String contents = request.getParameter("contents");
 			
 			Connection conn = JdbcConnection.getConnection();
-			MemberDAO dao = MemberDAO.getInstance();
+			MemberDAO memberDAO = MemberDAO.getInstance();
 			
-			int result = dao.modify(conn, idx, nickname, name, age, gender, tel, email, address);
-			request.setAttribute("modifyResult", result);
-			if(result == 1) {
-				request.getSession().setAttribute("member", dao.getMemberDTO(conn, idx));
-			}
+			int to_idx = memberDAO.getMemberIdx(conn, to_nickname);
+			
+			MsgDAO dao = MsgDAO.getInstance();
+			
+			int result = dao.write(conn, from_idx, to_idx, title, contents);
+			
+			System.out.println(from_idx);
+			System.out.println(to_idx);
+			System.out.println(title);
+			System.out.println(contents);
+			
+			request.setAttribute("writeResult", 1);
 			
 			JdbcCloser.close(conn);
 			request.getRequestDispatcher(checkPath).forward(request, response);
+			
 		}
 	}
 

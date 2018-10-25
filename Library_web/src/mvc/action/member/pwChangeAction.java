@@ -49,7 +49,7 @@ public class pwChangeAction implements Action{
 			int result = dao.pwChange(conn, idx, newPw);
 			request.setAttribute("pwChangeResult", result);
 			if(result == 1) {
-				request.getSession().setAttribute("member", dao.getDTO(conn, idx));
+				request.getSession().setAttribute("member", dao.getMemberDTO(conn, idx));
 			}
 			
 			JdbcCloser.close(conn);

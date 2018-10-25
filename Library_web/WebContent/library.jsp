@@ -15,7 +15,7 @@
 
 <body>
 
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <div>
 	<form action="${pageContext.request.contextPath }/search" method="POST" target="w" onsubmit="search()">

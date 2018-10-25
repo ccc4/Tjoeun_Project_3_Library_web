@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <input type="button" value="회원정보수정" onclick="location.href='${pageContext.request.contextPath }/modifyView'">
 <input type="button" value="비밀번호변경" onclick="location.href='${pageContext.request.contextPath }/pwChangeView'">

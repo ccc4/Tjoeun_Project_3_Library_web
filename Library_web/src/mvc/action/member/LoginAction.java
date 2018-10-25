@@ -42,7 +42,7 @@ public class LoginAction implements Action{
 			int result = dao.login(conn, id, pw);
 			request.setAttribute("loginResult", result);
 			if(result == 1) {
-				request.getSession().setAttribute("member", dao.getDTO(conn, id));
+				request.getSession().setAttribute("member", dao.getMemberDTO(conn, id));
 				if(request.getParameter("saveId") != null) {
 					Cookie cookie = new Cookie("saveId", id);
 					response.addCookie(cookie);

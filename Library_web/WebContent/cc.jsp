@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 cc
 </body>

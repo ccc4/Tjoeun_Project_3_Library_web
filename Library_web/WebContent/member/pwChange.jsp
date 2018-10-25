@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/init/menu.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <form action="${pageContext.request.contextPath }/pwChange" method="POST">
 	<div>id: ${sessionScope.member.id }</div>
