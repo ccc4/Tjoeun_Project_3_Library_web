@@ -21,6 +21,7 @@
 	<c:when test="${!empty sessionScope.member }">
 		<div>
 			<p>${sessionScope.member.nickname } 님 환영합니다.</p>
+			<a onclick="window.open('${pageContext.request.contextPath }/mail?', null, 'height=500,width=500,top=200,left=200')">${rt.title }</a>
 			<input type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath }/member/myInfo.jsp'">
 			<input type="button" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/logout'">
 		</div>
