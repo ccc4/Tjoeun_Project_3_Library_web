@@ -27,7 +27,7 @@ public class RelayAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			MsgDTO dto = dao.getMsgDTO(conn, idx);
+			MsgDTO dto = dao.getRecievedMsgDTO(conn, idx);
 			dto.setContents(dto.getContents().replace("<br>", "\r\n"));
 			
 			request.setAttribute("relayMsg", dto);

@@ -34,7 +34,7 @@ public class SentListAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			int allCount = dao.allCount(conn);
+			int allCount = dao.sent_allCount(conn);
 			int onePage = BOOK_ONEPAGE;
 			int oneSection = BOOK_ONESECTION;
 			

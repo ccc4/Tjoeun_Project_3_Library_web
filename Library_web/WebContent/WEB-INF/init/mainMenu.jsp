@@ -6,22 +6,24 @@
 	<input type="button" value="관리자로그아웃" onclick="location.href='${pageContext.request.contextPath }/adminOut'">
 </c:if>
 <c:if test="${!adminCheck }">
-	<input type="button" value="관리자로그인" onclick="location.href='${pageContext.request.contextPath }/admin.jsp'">
+	<input type="button" value="관리자로그인" onclick="location.href='${pageContext.request.contextPath }/member/admin.jsp'">
 </c:if>
 
 <h3>성훈도서관</h3>
 <ul>
 	<li><a href="${pageContext.request.contextPath }/">메인</a></li>
 	<li><a href="${pageContext.request.contextPath }/library">책목록</a></li>
-	<li><a href="${pageContext.request.contextPath }/cc.jsp">게시판</a></li>
-	<li><a href="${pageContext.request.contextPath }/guestBook">방명록</a></li>
+	<li><a onclick="alert('준비중입니다.')">게시판</a></li>
+	<li><a onclick="alert('준비중입니다.')">방명록</a></li>
+<%-- 	<li><a href="${pageContext.request.contextPath }/cc.jsp">게시판</a></li>
+	<li><a href="${pageContext.request.contextPath }/guestBook">방명록</a></li> --%>
 </ul>
 
 <c:choose>
 	<c:when test="${!empty sessionScope.member }">
 		<div>
 			<p>${sessionScope.member.nickname } 님 환영합니다.</p>
-			<input type="button" value="쪽지" onclick="window.open('${pageContext.request.contextPath }/msg?', null, 'height=500,width=500,top=200,left=600')">
+			<input type="button" value="쪽지" onclick="window.open('${pageContext.request.contextPath }/msg', null, 'height=500,width=500,top=200,left=600')">
 			<input type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath }/member/myInfo.jsp'">
 			<input type="button" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/logout'">
 		</div>

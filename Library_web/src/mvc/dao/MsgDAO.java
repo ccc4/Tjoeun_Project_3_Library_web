@@ -32,13 +32,13 @@ public class MsgDAO {
 		return dto;
 	}
 	
-	public MsgDTO getMsgDTO(Connection conn, int idx) {
+	public MsgDTO getRecievedMsgDTO(Connection conn, int idx) {
 		MsgDTO dto = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM message_view WHERE idx = ?";
+		String sql = "SELECT * FROM recieved_message_view WHERE idx = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -57,13 +57,62 @@ public class MsgDAO {
 		return dto;
 	}
 	
-	public int allCount(Connection conn) {
+	public MsgDTO getSentMsgDTO(Connection conn, int idx) {
+		MsgDTO dto = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM sent_message_view WHERE idx = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto = getMsgDTO(rs);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return dto;
+	}
+	
+	public int recieved_allCount(Connection conn) {
 		int re = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT count(*) FROM message_view";
+		String sql = "SELECT count(*) FROM recieved_message_view";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
+	
+	public int sent_allCount(Connection conn) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT count(*) FROM sent_message_view";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -87,7 +136,7 @@ public class MsgDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM message_view WHERE to_idx = ? ORDER BY idx DESC LIMIT ?, ?";
+		String sql = "SELECT * FROM recieved_message_view WHERE to_idx = ? ORDER BY idx DESC LIMIT ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -114,7 +163,7 @@ public class MsgDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT * FROM message_view WHERE from_idx = ? ORDER BY idx DESC LIMIT ?, ?";
+		String sql = "SELECT * FROM sent_message_view WHERE from_idx = ? ORDER BY idx DESC LIMIT ?, ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -154,7 +203,7 @@ public class MsgDAO {
 			else re = 1;
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			re = -1;
 		} finally {
 			JdbcCloser.close(pstmt);
 		}
@@ -183,4 +232,76 @@ public class MsgDAO {
 		}
 		return re;
 	}
+	
+	public int recievedDelete(Connection conn, int idx) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE message SET recieved_exist = 0 WHERE idx = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			int check = pstmt.executeUpdate();
+			
+			if(check == 0) re = 0;
+			else re = 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
+	
+	public int sentDelete(Connection conn, int idx) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = "UPDATE message SET sent_exist = 0 WHERE idx = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			int check = pstmt.executeUpdate();
+			
+			if(check == 0) re = 0;
+			else re = 1;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
+	
+	public int checkNewMsg(Connection conn, int m_idx) {
+		int re = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT count(*) FROM recieved_message_view WHERE readDate IS NULL AND to_idx = ?;";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				re = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JdbcCloser.close(rs);
+			JdbcCloser.close(pstmt);
+		}
+		return re;
+	}
+	
 }

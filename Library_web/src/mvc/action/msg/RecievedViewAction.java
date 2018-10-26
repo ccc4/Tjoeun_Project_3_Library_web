@@ -29,7 +29,7 @@ public class RecievedViewAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			MsgDTO dto = dao.getMsgDTO(conn, idx);
+			MsgDTO dto = dao.getRecievedMsgDTO(conn, idx);
 			int check = dao.read(conn, idx);
 			
 			request.setAttribute("msg", dto);

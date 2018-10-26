@@ -28,7 +28,7 @@
 		<td>${msg.contents }</td>
 	</tr>
 </table>
-<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgD?idx=${msg.idx }'">
+<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgSD?idx=${msg.idx }'">
 
 </body>
 </html>

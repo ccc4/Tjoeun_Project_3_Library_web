@@ -27,7 +27,7 @@ public class ReplyAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			MsgDTO dto = dao.getMsgDTO(conn, idx);
+			MsgDTO dto = dao.getRecievedMsgDTO(conn, idx);
 			
 			request.setAttribute("replyMsg", dto);
 			

@@ -24,6 +24,16 @@
 <c:if test="${loginResult == 1 }">
 	<script type="text/javascript">
 		alert("로그인 성공");
+	</script>
+	<c:if test="${newMsg > 0 }">
+		<script type="text/javascript">
+			var check = confirm("안읽은 쪽지가 ${newMsg} 통 있습니다.\n확인하시겠습니까?");
+			if(check) {
+				window.open('${pageContext.request.contextPath }/msg', null, 'height=500,width=500,top=200,left=600');
+			}
+		</script>
+	</c:if>
+	<script type="text/javascript">
 		location.href= "${pageContext.request.contextPath}/";
 	</script>
 </c:if>
@@ -33,6 +43,7 @@
 		location.href= "${pageContext.request.contextPath}/";
 	</script>
 </c:if>
+
 
 <c:if test="${logoutResult == 1 }">
 	<script type="text/javascript">
