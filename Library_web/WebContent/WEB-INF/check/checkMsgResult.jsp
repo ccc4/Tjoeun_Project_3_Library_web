@@ -17,6 +17,7 @@
 		window.close(); */
 	}
 </script>
+
 <c:if test="${writeResult == 1 }">
 	<script type="text/javascript">
 		message("작성 성공");

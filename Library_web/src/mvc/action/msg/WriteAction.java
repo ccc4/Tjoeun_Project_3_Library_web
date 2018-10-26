@@ -33,7 +33,7 @@ public class WriteAction implements Action {
 			int from_idx = member.getIdx();
 			String to_nickname = request.getParameter("nickname");
 			String title = request.getParameter("title");
-			String contents = request.getParameter("contents");
+			String contents = request.getParameter("contents").replace("\r\n", "<br>");
 			
 			Connection conn = JdbcConnection.getConnection();
 			MemberDAO memberDAO = MemberDAO.getInstance();
@@ -44,12 +44,7 @@ public class WriteAction implements Action {
 			
 			int result = dao.write(conn, from_idx, to_idx, title, contents);
 			
-			System.out.println(from_idx);
-			System.out.println(to_idx);
-			System.out.println(title);
-			System.out.println(contents);
-			
-			request.setAttribute("writeResult", 1);
+			request.setAttribute("writeResult", result);
 			
 			JdbcCloser.close(conn);
 			request.getRequestDispatcher(checkPath).forward(request, response);

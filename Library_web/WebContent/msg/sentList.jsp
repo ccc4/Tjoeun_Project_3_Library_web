@@ -25,7 +25,7 @@
 		<c:forEach var="l" items="${list }" varStatus="status">
 			<tr>
 				<td>${status.index + 1 }</td>
-				<td>${l.title }</td>
+				<td><a href="${pageContext.request.contextPath }/msgSV?idx=${l.idx }">${l.title }</a></td>
 				<td>${l.to_nickname }</td>
 				<td>${l.sendDate }</td>
 				<td>

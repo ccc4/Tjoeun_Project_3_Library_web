@@ -4,16 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은쪽지함</title>
+<title>보낸쪽지함</title>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/msgMenu.jsp"/>
 
-<input type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msg'">
+<input type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msgS'">
 <table border="1">
 	<tr>
-		<td>보낸이</td>
-		<td>${msg.from_nickname }</td>
+		<td>받은이</td>
+		<td>${msg.to_nickname }</td>
 	</tr>
 	<tr>
 		<td>보낸날짜</td>
@@ -28,8 +28,6 @@
 		<td>${msg.contents }</td>
 	</tr>
 </table>
-<input type="button" value="답장" onclick="location.href='${pageContext.request.contextPath }/msgRp?idx=${msg.idx }'">
-<input type="button" value="전달" onclick="location.href='${pageContext.request.contextPath }/msgRl?idx=${msg.idx }'">
 <input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgD?idx=${msg.idx }'">
 
 </body>

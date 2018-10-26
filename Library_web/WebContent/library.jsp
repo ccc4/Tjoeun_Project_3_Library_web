@@ -9,7 +9,7 @@
 </head>
 <script type="text/javascript">
 	function search() {
-		open('','w','height=500,width=500,top=200,left=200');
+		open('','w','height=500,width=500,top=200,left=600');
 	}
 </script>
 
@@ -42,7 +42,7 @@
 		<c:forEach var="l" items="${list }" varStatus="status">
 			<tr>
 				<td><p>${status.index + 1 }</p></td>				
-				<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${l.idx }', null, 'height=500,width=500,top=200,left=200')">${l.title }</a></td>	
+				<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${l.idx }', null, 'height=500,width=500,top=200,left=600')">${l.title }</a></td>	
 				<td><p>${l.author }</p></td>				
 				<td><p>${l.publisher }</p></td>				
 				<td><p>${l.count }</p></td>				

@@ -11,6 +11,7 @@
 
 <%-- <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/library'"> --%>
 <!-- <input type="button" value="뒤로" onclick="history.back()"> -->
+<input type="button" value="닫기" onclick="window.close()">
 
 <h3>책 정보</h3>
 

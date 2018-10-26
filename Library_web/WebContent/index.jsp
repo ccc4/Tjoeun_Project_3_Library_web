@@ -29,7 +29,7 @@
 				<c:forEach var="rt" items="${rentalList }" varStatus="status">
 					<tr>
 						<td>${status.index + 1 }</td>
-						<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${rt.b_idx }', null, 'height=500,width=500,top=200,left=200')">${rt.title }</a></td>
+						<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${rt.b_idx }', null, 'height=500,width=500,top=200,left=600')">${rt.title }</a></td>
 						<td>${rt.rentalDate }</td>
 					</tr>
 				</c:forEach>
@@ -49,7 +49,7 @@
 				<c:forEach var="rv" items="${reservationList }" varStatus="status">
 					<tr>
 						<td>${status.index + 1 }</td>
-						<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${rv.b_idx }', null, 'height=500,width=500,top=200,left=200')">${rv.title }</a></td>
+						<td><a onclick="window.open('${pageContext.request.contextPath }/lView?b_idx=${rv.b_idx }', null, 'height=500,width=500,top=200,left=600')">${rv.title }</a></td>
 						<td>${rv.reserveDate }</td>
 					</tr>
 				</c:forEach>
