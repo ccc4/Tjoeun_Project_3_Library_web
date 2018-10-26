@@ -2,7 +2,6 @@ package mvc.action.msg;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +11,6 @@ import mvc.action.Action;
 import mvc.dao.MemberDAO;
 import mvc.dao.MsgDAO;
 import mvc.dto.MemberDTO;
-import mvc.dto.MsgDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 
@@ -43,6 +41,12 @@ public class WriteAction implements Action {
 			MsgDAO dao = MsgDAO.getInstance();
 			
 			int result = dao.write(conn, from_idx, to_idx, title, contents);
+			if(result == 1) {
+				
+				MsgDAO msgDAO = MsgDAO.getInstance();
+				int newMsg = msgDAO.checkNewMsg(conn, member.getIdx());
+				request.getSession().setAttribute("newMsg", newMsg);
+			}
 			
 			request.setAttribute("writeResult", result);
 			

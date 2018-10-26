@@ -5,18 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 
-<%-- <input type="button" value="목록" onclick="location.href='${pageContext.request.contextPath }/library'"> --%>
-<!-- <input type="button" value="뒤로" onclick="history.back()"> -->
-<input type="button" value="닫기" onclick="window.close()">
+<input class="btn btn-default pull-right" type="button" value="닫기" onclick="window.close()">
 
-<h3>책 정보</h3>
-
-<div>
-	<table border="1">
+<div class="container">
+	<table class="table">
+		<caption class="h4">책정보</caption>
 		<tr>
 			<td>책제목</td>
 			<td>${book.title }</td>
@@ -51,41 +48,51 @@
 				</c:if>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="pull-right">
+					<c:if test="${rentalOk }">
+						<input class="btn btn-default" type="button" value="대여" onclick="location.href='${pageContext.request.contextPath }/rental?b_idx=${book.idx }'">
+					</c:if>
+					<c:if test="${!rentalOk }">
+						<input class="btn btn-default" type="button" value="대여" disabled>
+					</c:if>
+					<c:if test="${reserveOk }">
+						<input class="btn btn-default" type="button" value="예약" onclick="location.href='${pageContext.request.contextPath }/reserve?b_idx=${book.idx }'">
+					</c:if>
+					<c:if test="${!reserveOk }">
+						<input class="btn btn-default" type="button" value="예약" disabled>
+					</c:if>
+				</div>
+			</td>		
+		</tr>
+		<c:if test="${!empty sessionScope.member }">
+			<tr>
+				<td colspan="2">
+					<div class="pull-right">
+						<c:if test="${returnOk }">
+							<input class="btn btn-default" type="button" value="반납" onclick="location.href='${pageContext.request.contextPath }/return?b_idx=${book.idx }'">
+						</c:if>
+						<c:if test="${!returnOk }">
+							<input class="btn btn-default" type="button" value="반납" disabled>
+						</c:if>
+						<c:if test="${cancelOk }">
+							<input class="btn btn-default" type="button" value="예약취소" onclick="location.href='${pageContext.request.contextPath }/cancel?b_idx=${book.idx }'">
+						</c:if>
+						<c:if test="${!cancelOk }">
+							<input class="btn btn-default" type="button" value="예약취소" disabled>
+						</c:if>
+					</div>
+				</td>
+			</tr>
+		</c:if>
 	</table>
 	
-	<div>
-		<c:if test="${rentalOk }">
-			<input type="button" value="대여" onclick="location.href='${pageContext.request.contextPath }/rental?b_idx=${book.idx }'">
-		</c:if>
-		<c:if test="${!rentalOk }">
-			<input type="button" value="대여" disabled>
-		</c:if>
-		<c:if test="${reserveOk }">
-			<input type="button" value="예약" onclick="location.href='${pageContext.request.contextPath }/reserve?b_idx=${book.idx }'">
-		</c:if>
-		<c:if test="${!reserveOk }">
-			<input type="button" value="예약" disabled>
-		</c:if>
-	</div>
 	
-	<c:if test="${!empty sessionScope.member }">
-		<div>
-			<c:if test="${returnOk }">
-				<input type="button" value="반납" onclick="location.href='${pageContext.request.contextPath }/return?b_idx=${book.idx }'">
-			</c:if>
-			<c:if test="${!returnOk }">
-				<input type="button" value="반납" disabled>
-			</c:if>
-			<c:if test="${cancelOk }">
-				<input type="button" value="예약취소" onclick="location.href='${pageContext.request.contextPath }/cancel?b_idx=${book.idx }'">
-			</c:if>
-			<c:if test="${!cancelOk }">
-				<input type="button" value="예약취소" disabled>
-			</c:if>
-		</div>
-	</c:if>
+	
+	
 </div>
 
-
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

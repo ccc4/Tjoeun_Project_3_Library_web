@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
-import mvc.dao.BookDAO;
 import mvc.dao.guestBookDAO;
-import mvc.dto.BookDTO;
 import mvc.dto.guestBookDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;

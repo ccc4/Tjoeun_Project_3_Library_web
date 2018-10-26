@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import mvc.action.Action;
 import mvc.dao.MsgDAO;
-import mvc.dto.MsgDTO;
 import mvc.util.JdbcCloser;
 import mvc.util.JdbcConnection;
 

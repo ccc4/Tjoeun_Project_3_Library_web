@@ -82,16 +82,17 @@ public class MsgDAO {
 		return dto;
 	}
 	
-	public int recieved_allCount(Connection conn) {
+	public int recieved_allCount(Connection conn, int m_idx) {
 		int re = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT count(*) FROM recieved_message_view";
+		String sql = "SELECT count(*) FROM recieved_message_view WHERE to_idx = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m_idx);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -106,16 +107,17 @@ public class MsgDAO {
 		return re;
 	}
 	
-	public int sent_allCount(Connection conn) {
+	public int sent_allCount(Connection conn, int m_idx) {
 		int re = 0;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
-		String sql = "SELECT count(*) FROM sent_message_view";
+		String sql = "SELECT count(*) FROM sent_message_view WHERE from_idx = ?";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, m_idx);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

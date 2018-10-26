@@ -34,7 +34,7 @@ public class RecievedListAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			int allCount = dao.recieved_allCount(conn);
+			int allCount = dao.recieved_allCount(conn, m_idx);
 			int onePage = BOOK_ONEPAGE;
 			int oneSection = BOOK_ONESECTION;
 			
@@ -63,6 +63,7 @@ public class RecievedListAction implements Action {
 			
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
+			request.setAttribute("onePage", onePage);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);

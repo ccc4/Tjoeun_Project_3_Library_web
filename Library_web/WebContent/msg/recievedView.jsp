@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은쪽지함</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/msgMenu.jsp"/>
 
-<input type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msg'">
-<table border="1">
+<input class="btn btn-default" type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msg'">
+<table class="table">
 	<tr>
 		<td>보낸이</td>
 		<td>${msg.from_nickname }</td>
@@ -28,9 +28,10 @@
 		<td>${msg.contents }</td>
 	</tr>
 </table>
-<input type="button" value="답장" onclick="location.href='${pageContext.request.contextPath }/msgRp?idx=${msg.idx }'">
-<input type="button" value="전달" onclick="location.href='${pageContext.request.contextPath }/msgRl?idx=${msg.idx }'">
-<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgD?idx=${msg.idx }'">
+<input class="btn btn-default" type="button" value="답장" onclick="location.href='${pageContext.request.contextPath }/msgRp?idx=${msg.idx }'">
+<input class="btn btn-default" type="button" value="전달" onclick="location.href='${pageContext.request.contextPath }/msgRl?idx=${msg.idx }'">
+<input class="btn btn-default" type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgD?idx=${msg.idx }'">
 
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

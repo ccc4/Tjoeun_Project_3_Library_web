@@ -34,7 +34,7 @@ public class SentListAction implements Action {
 			Connection conn = JdbcConnection.getConnection();
 			MsgDAO dao = MsgDAO.getInstance();
 			
-			int allCount = dao.sent_allCount(conn);
+			int allCount = dao.sent_allCount(conn, m_idx);
 			int onePage = BOOK_ONEPAGE;
 			int oneSection = BOOK_ONESECTION;
 			
@@ -63,6 +63,7 @@ public class SentListAction implements Action {
 			
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
+			request.setAttribute("onePage", onePage);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);

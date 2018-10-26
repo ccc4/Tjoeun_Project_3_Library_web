@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 
@@ -14,5 +14,6 @@
 	<input type="submit" value="로그인">
 </form>
 
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

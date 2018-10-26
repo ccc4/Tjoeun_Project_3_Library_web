@@ -2,7 +2,6 @@ package mvc.action.book;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +16,6 @@ import mvc.util.JdbcConnection;
 
 public class ViewAction implements Action {
 
-	private static final int BOOK_ONEPAGE = 5;
-	private static final int BOOK_ONESECTION = 5;
-
-	
 	private static final String viewPath = "/library/view.jsp";
 	private static final String checkPath = "/WEB-INF/check/checkBookResult.jsp";
 	

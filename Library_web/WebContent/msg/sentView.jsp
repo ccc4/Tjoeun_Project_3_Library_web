@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>보낸쪽지함</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/msgMenu.jsp"/>
 
-<input type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msgS'">
-<table border="1">
+<input class="btn btn-default" type="button" value="뒤로" onclick="location.href='${pageContext.request.contextPath }/msgS'">
+<table class="table">
 	<tr>
 		<td>받은이</td>
 		<td>${msg.to_nickname }</td>
@@ -28,7 +28,8 @@
 		<td>${msg.contents }</td>
 	</tr>
 </table>
-<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgSD?idx=${msg.idx }'">
+<input class="btn btn-default" type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath }/msgSD?idx=${msg.idx }'">
 
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

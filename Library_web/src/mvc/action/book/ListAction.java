@@ -59,6 +59,7 @@ public class ListAction implements Action {
 			
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
+			request.setAttribute("onePage", onePage);
 			request.setAttribute("totalPage", totalPage);
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);

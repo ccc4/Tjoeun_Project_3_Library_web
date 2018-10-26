@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>받은쪽지함</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/msgMenu.jsp"></jsp:include>
 
-<table border="1">
-	<caption>받은쪽지함</caption>
+<table class="table">
+	<caption class="h4">받은쪽지함</caption>
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -24,7 +24,7 @@
 	<tbody>
 		<c:forEach var="l" items="${list }" varStatus="status">
 			<tr>
-				<td>${status.index + 1 }</td>
+				<td>${(page - 1) * onePage + (status.index + 1) }</td>
 				<td><a href="${pageContext.request.contextPath }/msgV?idx=${l.idx }">${l.title }</a></td>
 				<td>${l.from_nickname }</td>
 				<td>${l.sendDate }</td>
@@ -82,6 +82,6 @@
 	</ul>
 </nav>
 
-
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

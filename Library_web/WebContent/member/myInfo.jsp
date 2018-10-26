@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
-<input type="button" value="회원정보수정" onclick="location.href='${pageContext.request.contextPath }/modifyView'">
-<input type="button" value="비밀번호변경" onclick="location.href='${pageContext.request.contextPath }/pwChangeView'">
+<input class="btn btn-default" type="button" value="회원정보수정" onclick="location.href='${pageContext.request.contextPath }/modifyView'">
+<input class="btn btn-default" type="button" value="비밀번호변경" onclick="location.href='${pageContext.request.contextPath }/pwChangeView'">
 
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

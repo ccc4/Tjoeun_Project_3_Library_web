@@ -4,28 +4,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/msgMenu.jsp"></jsp:include>
 
 <form action="${pageContext.request.contextPath }/msgW" method="POST">
 	<c:if test="${!empty replyMsg }">
-		<div><input type="text" name="nickname" value="${replyMsg.from_nickname }"></div>
+		<div class="form-group"><input class="form-control" type="text" name="nickname" value="${replyMsg.from_nickname }"></div>
 	</c:if>
 	<c:if test="${empty replyMsg }">
-		<div><input type="text" name="nickname" placeholder="받는이(닉네임)"></div>
+		<div class="form-group"><input class="form-control" type="text" name="nickname" placeholder="받는이(닉네임)"></div>
 	</c:if>
 	<c:if test="${!empty relayMsg }">
-		<div><input type="text" name="title" value="${relayMsg.title }"></div>
-		<div><textarea name="contents">${relayMsg.contents }</textarea></div>
+		<div class="form-group"><input class="form-control" type="text" name="title" value="${relayMsg.title }"></div>
+		<div class="form-group"><textarea class="form-control" name="contents">${relayMsg.contents }</textarea></div>
 	</c:if>
 	<c:if test="${empty relayMsg }">
-		<div><input type="text" name="title" placeholder="제목"></div>
-		<div><textarea name="contents" placeholder="내용"></textarea></div>
+		<div class="form-group"><input class="form-control" type="text" name="title" placeholder="제목"></div>
+		<div class="form-group"><textarea class="form-control" name="contents" placeholder="내용"></textarea></div>
 	</c:if>
-	<input type="submit" value="보내기">
+	<input class="btn btn-default" type="submit" value="보내기">
 </form>
+
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

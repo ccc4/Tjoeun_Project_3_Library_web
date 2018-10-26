@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <div class="container">
 	<form action="${pageContext.request.contextPath }/modify" method="POST">
-		<table> 
+		<table class="table"> 
 		<!-- class="table" style="table-layout:fixed; word-break:break-all;"> -->
 			<tr>
 				<td width="150">아이디</td>
@@ -67,9 +67,11 @@
 				<td><textarea rows="" cols="" name="address">${sessionScope.member.address }</textarea></td>
 			</tr>
 		</table>
-		<input type="submit" class="btn btn-primary pull-right" value="수정">
+		<input class="btn btn-default pull-right" type="submit" class="btn btn-primary pull-right" value="수정">
 		<!--  onclick="joinConfirm()"> -->
 	</form>
 </div>
+
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

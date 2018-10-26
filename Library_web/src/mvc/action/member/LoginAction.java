@@ -48,6 +48,7 @@ public class LoginAction implements Action{
 				
 				MsgDAO msgDAO = MsgDAO.getInstance();
 				int newMsg = msgDAO.checkNewMsg(conn, member.getIdx());
+				request.getSession().setAttribute("newMsg", newMsg);
 				if(newMsg > 0) {
 					request.setAttribute("newMsg", newMsg);
 				}

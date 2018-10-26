@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <div class="container">
 	<form action="${pageContext.request.contextPath }/join" method="POST" name="reg_frm">
-		<table> 
+		<table class="table"> 
 		<!-- class="table" style="table-layout:fixed; word-break:break-all;"> -->
 			<tr>
 				<td width="150">아이디</td>
@@ -24,11 +24,11 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="pw" maxlength="12"></td>
+				<td><input type="password" name="pw" id="pw" maxlength="12"></td>
 			</tr>
 			<tr>
 				<td>비밀번호재입력</td>
-				<td><input type="password" name="pw_check" maxlength="12"></td>
+				<td><input type="password" name="pw_check" id="pw_check" maxlength="12"></td>
 			</tr>
 			<tr>
 				<td>별명</td>
@@ -41,11 +41,11 @@
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="name" maxlength="8"></td>
+				<td><input type="text" id="name" name="name" maxlength="8"></td>
 			</tr>
 			<tr>
 				<td>나이</td>
-				<td><input type="text" name="age" maxlength="4"></td>
+				<td><input type="number" id="age" name="age" maxlength="4"></td>
 			</tr>
 			<tr>
 				<td>성별</td>
@@ -55,25 +55,27 @@
 				</td>
 			</tr>
 			<tr>
-				<td>연락처</td>
+				<td>연락처(-없이 입력)</td>
 				<td>
-					<input type="text" name="tel" maxlength="12">
+					<input type="number" id="tel" name="tel" maxlength="12">
 				</td>
 			</tr>
 			<tr>
 				<td>이메일</td>
 				<td>
-					<input type="email" name="email" maxlength="50">
+					<input type="email" id="email" name="email" maxlength="50">
 				</td>
 			</tr>
 			<tr>
 				<td>주소</td>
-				<td><textarea rows="" cols="" name="address"></textarea></td>
+				<td><textarea id="address" name="address"></textarea></td>
 			</tr>
 		</table>
-		<input type="submit" class="btn btn-primary pull-right" value="회원가입">
+		<input class="btn btn-default pull-right" type="button" value="회원가입" onclick="join()">
 		<!--  onclick="joinConfirm()"> -->
 	</form>
 </div>
+
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

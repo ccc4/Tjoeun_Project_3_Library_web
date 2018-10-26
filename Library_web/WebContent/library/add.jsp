@@ -4,15 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/init/prelude.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
 <div class="container">
 	<form action="${pageContext.request.contextPath }/addBook" method="POST" enctype="multipart/form-data">
-		<table> 
-		<!-- class="table" style="table-layout:fixed; word-break:break-all;"> -->
+		<table class="table"> 
 			<tr>
 				<td>제목</td>
 				<td><input type="text" name="title"></td>
@@ -34,10 +33,10 @@
 				<td></td>
 			</tr>
 		</table>
-		<input type="submit" class="btn btn-primary pull-right" value="등록">
-		<!--  onclick="joinConfirm()"> -->
+		<input class="btn btn-primary pull-right" type="submit" class="btn btn-primary pull-right" value="등록">
 	</form>
 </div>
 
+<jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
 </html>

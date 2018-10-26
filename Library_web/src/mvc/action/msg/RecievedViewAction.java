@@ -2,7 +2,6 @@ package mvc.action.msg;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +29,15 @@ public class RecievedViewAction implements Action {
 			MsgDAO dao = MsgDAO.getInstance();
 			
 			MsgDTO dto = dao.getRecievedMsgDTO(conn, idx);
-			int check = dao.read(conn, idx);
+			if(dto != null) {
+				int check = dao.read(conn, idx);
+				
+				MemberDTO member = (MemberDTO) request.getSession().getAttribute("member");
+				
+				MsgDAO msgDAO = MsgDAO.getInstance();
+				int newMsg = msgDAO.checkNewMsg(conn, member.getIdx());
+				request.getSession().setAttribute("newMsg", newMsg);
+			}
 			
 			request.setAttribute("msg", dto);
 			

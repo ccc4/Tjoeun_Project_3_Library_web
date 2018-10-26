@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import mvc.dto.BookDTO;
 import mvc.dto.guestBookDTO;
 import mvc.util.JdbcCloser;
 
