@@ -57,14 +57,14 @@
 	}
 	
 	function login() {
-		if(!$("#id").val() ) {
+		if(!$("#log_id").val() ) {
 			alert("아이디를 입력해주세요.");
-			$("#id").focus();
+			$("#log_id").focus();
 			return;
 		}
-		if(!$("#pw").val() ) {
+		if(!$("#log_pw").val() ) {
 			alert("비밀번호를 입력해주세요.");
-			$("#pw").focus();
+			$("#log_pw").focus();
 			return;
 		}
 		

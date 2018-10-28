@@ -67,7 +67,7 @@
 				<td><textarea rows="" cols="" name="address">${sessionScope.member.address }</textarea></td>
 			</tr>
 		</table>
-		<input class="btn btn-default pull-right" type="submit" class="btn btn-primary pull-right" value="수정">
+		<input class="btn btn-default" type="submit" class="btn btn-primary pull-right" value="수정">
 		<!--  onclick="joinConfirm()"> -->
 	</form>
 </div>

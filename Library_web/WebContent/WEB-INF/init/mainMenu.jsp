@@ -45,22 +45,22 @@
 	 							<button class="btn btn-default navbar-btn" type="button" onclick="window.open('${pageContext.request.contextPath }/msg', null, 'height=500,width=500,top=200,left=600')">쪽지<span class="badge">${sessionScope.newMsg }</span></button>
  							</c:if>
 						</li>
-						<li><input class="btn btn-default navbar-btn" type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath }/member/myInfo.jsp'"></li>
+						<li><input class="btn btn-default navbar-btn" type="button" value="정보수정" onclick="location.href='${pageContext.request.contextPath }/myInfo'"></li>
 						<li><input class="btn btn-default navbar-btn" type="button" value="로그아웃" onclick="location.href='${pageContext.request.contextPath }/logout'"></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<form class="navbar-form navbar-right" action="${pageContext.request.contextPath }/login" method="POST" name="log_frm">
 						<c:if test="${!empty cookie.saveId }" var="check">
-							<div class="form-group"><input class="form-control" type="text" id="id" name="id" value="${cookie.saveId.value }"></div>
-							<div class="form-group"><input class="form-control" type="password" id="pw" name="pw" placeholder="비밀번호"></div>
+							<div class="form-group"><input class="form-control" type="text" id="log_id" name="id" value="${cookie.saveId.value }"></div>
+							<div class="form-group"><input class="form-control" type="password" id="log_pw" name="pw" placeholder="비밀번호"></div>
 							<input class="btn btn-default" type="button" value="로그인" onclick="login()">
 							<input class="btn btn-default" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath }/member/join.jsp'">
 							<div><label><input type="checkbox" name="saveId" checked><span class="label label-default">아이디 저장</span></label></div>
 						</c:if>
 						<c:if test="${!check }">
-							<div class="form-group"><input class="form-control" type="text" id="id" name="id" placeholder="아이디"></div>
-							<div class="form-group"><input class="form-control" type="password" id="pw" name="pw" placeholder="비밀번호"></div>
+							<div class="form-group"><input class="form-control" type="text" id="log_id" name="id" placeholder="아이디"></div>
+							<div class="form-group"><input class="form-control" type="password" id="log_pw" name="pw" placeholder="비밀번호"></div>
 							<input class="btn btn-default" type="button" value="로그인" onclick="login()">
 							<input class="btn btn-default" type="button" value="회원가입" onclick="location.href='${pageContext.request.contextPath }/joinF'">
 							<div><label><input type="checkbox" name="saveId"><span class="label label-default">아이디 저장</span></label></div>

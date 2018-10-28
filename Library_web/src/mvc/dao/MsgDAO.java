@@ -291,7 +291,7 @@ public class MsgDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1, m_idx);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {

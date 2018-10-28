@@ -9,8 +9,11 @@
 <body>
 <jsp:include page="/WEB-INF/init/mainMenu.jsp"></jsp:include>
 
-<input class="btn btn-default" type="button" value="회원정보수정" onclick="location.href='${pageContext.request.contextPath }/modifyView'">
-<input class="btn btn-default" type="button" value="비밀번호변경" onclick="location.href='${pageContext.request.contextPath }/pwChangeView'">
+<div class="container">
+	<input class="btn btn-default" type="button" value="회원정보수정" onclick="location.href='${pageContext.request.contextPath }/modifyView'">
+	<input class="btn btn-default" type="button" value="비밀번호변경" onclick="location.href='${pageContext.request.contextPath }/pwChangeView'">
+
+</div>
 
 <jsp:include page="/WEB-INF/init/coda.jsp"></jsp:include>
 </body>
