@@ -73,10 +73,10 @@
 			<li class="disabled"><a href="#">다음</a></li>
 		</c:if>
 		
-		<c:if test="${page != totalPage }">
+		<c:if test="${page != totalPage && totalPage != 0}">
 			<li><a href="${pageContext.request.contextPath }/msg?page=${totalPage}">끝</a></li>
 		</c:if>
-		<c:if test="${page == totalPage }">
+		<c:if test="${page == totalPage || totalPage == 0}">
 			<li class="disabled"><a href="#">끝</a></li>
 		</c:if>
 	</ul>
